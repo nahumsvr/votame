@@ -1,21 +1,27 @@
-# bun-react-template
+# Votame!
 
-To install dependencies:
+![Badge](https://img.shields.io/badge/Estado-En_Desarrollo-yellow)
 
-```bash
-bun install
-```
+Una app para proponer, votar y rankear ideas para planes de la semana.
 
-To start a development server:
+## 📸 Screenshots
+
+![Nombre de la imagen](./src/images/screenshots/main.png)
+
+## 🚀 Pre-requisitos
+
+* Bun
+
+    git clone [https://github.com/nahumsvr/votame](https://github.com/nahumsvr/votame)
+    ```
+2.  Instala las dependencias:
+    ```bash
+    bun install
+    
+
+## 💻 Cómo usar
+
+Para correr el servidor de desarrollo:
 
 ```bash
 bun dev
-```
-
-To run for production:
-
-```bash
-bun start
-```
-
-This project was created using `bun init` in bun v1.3.8. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
