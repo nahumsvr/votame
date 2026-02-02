@@ -12,6 +12,10 @@ Una app para proponer, votar y rankear ideas para planes de la semana.
 
 * Bun
 
+## 🔧 Instalación
+
+1.  Clona el repositorio:
+    ```
     git clone [https://github.com/nahumsvr/votame](https://github.com/nahumsvr/votame)
     ```
 2.  Instala las dependencias:
