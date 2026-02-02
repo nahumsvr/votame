@@ -1,0 +1,47 @@
+.ranking-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ranking-card {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    background-color: #2F2E2D;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+/* ranking-card IMAGE */
+.ranking-card-image {
+    align-items: center;
+}
+
+.ranking-card-image img {
+    aspect-ratio: 1;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* ranking-card CONTENT */
+.ranking-card-content {
+    align-content: center;
+}
+
+.ranking-card-content-title,
+h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.ranking-card-content-user {
+    color: #FF9C31;
+    font-weight: 200;
+    font-size: 1rem;
+}
+
+.ranking-card-content-points {
+    font-size: 1rem;
+}
