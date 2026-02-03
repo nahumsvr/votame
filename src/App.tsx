@@ -1,13 +1,14 @@
 import "./index.css";
 import RankingCard from "./components/RankingCard";
+import { Link, Routes, Route } from "react-router";
 
-export function App() {
+function Home() {
   return (
-    <div className="app">
+      <>
       <header>
         <div className="header-buttons-container">
-          <button>Votar</button>
-          <button>Proponer</button>
+          <Link to="/votar">Votar</Link>
+          <Link to="/proponer">Proponer</Link>
         </div>
         <h1>Votame Ranking</h1>
         <p>Semana 5</p>
@@ -24,6 +25,16 @@ export function App() {
           </RankingCard>
         </section>
       </main>
+    </>
+  );
+}
+
+export function App() {
+  return (
+    <div className="app">
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   );
 }

@@ -1,9 +1,20 @@
 /* Reseteo de estilos */
 :root {
+  /* Colores */
+  --primary-color: #FF9C31;
+  --secondary-color: #1A1713;
+  --text-color: #fff;
+  --background-color: #1A1713;
+  /* Spacing */
+  --spacing-unit: 1rem;
+  --spacing-sm: calc(var(--spacing-unit) * .5);
+  --spacing-md: var(--spacing-unit);
+  --spacing-lg: calc(var(--spacing-unit) * 2);
+  /* Tipografía */
   font-family: "Cascadia Code", sans-serif;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #1A1713;
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
 body {
@@ -24,14 +35,14 @@ select {
 
 /* header */
 h1 {
-  color: #FF9C31;
+  color: var(--primary-color);
 }
 
 header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
+  padding: var(--spacing-md);
   position: relative;
 }
 
@@ -50,22 +61,24 @@ header p {
 
 .header-buttons-container {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-md);
 }
 
 @media (min-width: 600px) {
   .header-buttons-container {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
   }
 }
 
-.header-buttons-container button {
+.header-buttons-container>* {
   border-radius: 0;
-  border: .2rem solid #fff;
+  border: .2rem solid var(--text-color);
   background: transparent;
-  padding: .5rem 1rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 
@@ -74,5 +87,5 @@ header p {
   max-width: 31rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: var(--spacing-md);
 }
