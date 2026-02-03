@@ -3,7 +3,6 @@ import "./header.css";
 
 export default function Header({week, title}: {week: number, title: string}) {
   const location = useLocation();
-  console.log("Current route:", location.pathname);
 
   return (
     <header>
