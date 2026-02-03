@@ -62,8 +62,13 @@ form section {
   overflow: hidden;
 }
 
-.image-upload-area.dragging {
-  border-color: #22d3ee;
+.image-upload-area.dragging,
+.image-upload-area.dragging svg path,
+.image-upload-area.dragging p 
+{
+    border-color: #22d3ee;
+    fill: #22d3ee;
+    color: #22d3ee;
 }
 
 .image-upload-area:hover {
