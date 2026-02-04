@@ -1,0 +1,74 @@
+/* Card */
+.ranking-item-container {
+    background-color: var(--secondary-color);
+    padding: var(--spacing-md);
+}
+
+.ranking-item, .ranking-item-info {
+    display: grid;
+    gap: var(--spacing-md);
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.ranking-item-image {
+    aspect-ratio: 1;
+    height: 40vh;
+}
+
+.ranking-item-info h2, .ranking-item-info p {
+    margin: 0;
+}
+
+.ranking-item-info p {
+    color: var(--primary-color);
+}
+
+.ranking-item-user {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.ranking-items-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+/* Buttons */
+.ranking-item-vote-buttons {
+    margin-top: var(--spacing-lg);
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+}
+
+.container-ranking-button {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    gap: var(--spacing-md);
+    position: relative;
+}
+
+.ranking-button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: calc(var(--spacing-sm)/3) solid var(--text-color);
+    background-color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.ranking-button:active {
+    transform: scale(0.92);
+}
+
+.ranking-button-pt {
+    position: absolute;
+    top: calc(var(--spacing-md) * -1);
+    right: calc(var(--spacing-md) * -1);
+    background-color: var(--text-color);
+    color: var(--background-color);
+    padding: calc(var(--spacing-sm)/2);
+}
