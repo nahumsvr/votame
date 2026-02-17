@@ -29,13 +29,16 @@ export const getPosts = async (): Promise<Post[]> => {
 // Aquí implementamos el POST que necesitabas
 export const sendVote = async (
   postId: number,
-  value: number,
+  points: number,
   userName?: string,
 ): Promise<void> => {
-  const response = await fetch(`${API_URL}/votes`, {
+  console.log(
+    JSON.stringify({ postId, points, userName: userName ?? "unknown" }),
+  );
+  const response = await fetch(`${API_URL}/votes/`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ postId, value, userName: userName ?? "unknown" }),
+    body: JSON.stringify({ postId, points, userName: userName ?? "unknown" }),
   });
 
   if (!response.ok) throw new Error("No se pudo registrar el voto");
