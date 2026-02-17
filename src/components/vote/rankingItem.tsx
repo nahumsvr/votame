@@ -6,10 +6,15 @@ function UserIcon() {
   )
 }
 
-export default function RankingItem({title, user, imageUrl, style}: {title: string, user: string, imageUrl: string, style?: React.CSSProperties}) {
+export default function RankingItem({title, user, imageUrl, link, style}: {title: string, user: string, imageUrl: string, link?: string, style?: React.CSSProperties}) {
   return (
     <article className="ranking-item-container" style={style}>
-        <a href="#" className="ranking-item">
+        <a 
+          href={link || "#"} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="ranking-item"
+        >
           <img
             src={imageUrl}  
             alt=""

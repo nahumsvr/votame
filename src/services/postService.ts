@@ -6,6 +6,7 @@ export interface Post {
   createdAt: Date;
   score: number;
   rotation?: number;
+  link?: string;
 }
 
 interface PostResponse {
