@@ -1,4 +1,4 @@
-import "./RankingCard.css";
+import "./rankingCard.css";
 
 export default function RankingCard({ children, userName, points, position, imageUrl }: { children: React.ReactNode, userName: string, points: number, position: number, imageUrl: string }) {
     return (

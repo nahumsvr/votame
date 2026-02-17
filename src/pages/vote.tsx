@@ -1,56 +1,67 @@
+import { useState } from "react";
 import "./vote.css";
-
-function UserIcon() {
-  return (
-    <svg width="16" height="20" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 36H28.001V28H32.001V40H0V28H4V36ZM28 28H4V24H28V28ZM22 4H10.001V16H22V20H10V16H6.00098V4H10V0H22V4ZM26.001 16H22.001V4H26.001V16Z" fill="white"/>
-    </svg>
-  )
-}
-
-function VoteButton({text, option, points}: {text: string, option: number, points: number}) {
-  return (
-    <span className="container-ranking-button">
-      <div className="ranking-button-container">
-        <span className="ranking-button-pt">+{points}</span>
-        <button className="ranking-button">
-          {text}
-        </button>
-      </div>
-      <span className="ranking-button-option">[{option}]</span>
-    </span>
-  )
-}
-
-function RankingItem({title, user, imageUrl}: {title: string, user: string, imageUrl: string}) {
-  return (
-    <article className="ranking-item-container">
-        <a href="#" className="ranking-item">
-          <img
-            src={imageUrl}  
-            alt=""
-            className="ranking-item-image"
-          />
-          <section className="ranking-item-info">
-            <h2>{title}</h2>
-            <div className="ranking-item-user">
-              <UserIcon />
-              <p>@{user}</p>
-            </div>
-          </section>
-        </a>
-      </article>
-  )
-}
+import VoteButton from "@/components/vote/voteButton";
+import RankingItem from "@/components/vote/rankingItem";
+import useVoteStack from "@/hooks/useVoteStack";
 
 export default function Vote() {
+  const { posts, loading, error, submitVote, removeTopPost } = useVoteStack();
+  
+  const [isExiting, setIsExiting] = useState(false);
+
+  const handleVoteClick = (points: number) => {
+    if (posts.length === 0 || isExiting) return;
+    
+    setIsExiting(true);
+    
+    submitVote(points);
+    
+    setTimeout(() => {
+      removeTopPost();
+      setIsExiting(false);
+    }, 500);
+  };
+
+  if (loading) return <div className="loading">Cargando posts...</div>;
+  if (error) return <div className="error">Error: {error}</div>;
+
   return (
     <>
-      <RankingItem title="Titulo" user="userName" imageUrl="https://akamai.sscdn.co/letras/360x360/albuns/1/2/5/7/2183651712605467.jpg" />
+      <div className="card-stack">
+        {posts.map((post, index) => {
+          const isTop = index === 0;
+          const style: React.CSSProperties = {
+            zIndex: 100 - index,
+            transform: (isTop && isExiting)
+            ? `rotate(${Math.random() * 100 - 50}deg) translateY(-150%)`
+            : `scale(${isTop ? 1 : 1 - index * 0.1}) rotate(${isTop ? 0 : post.rotation}deg)`,
+            opacity: (isTop && isExiting) ? 0 : 1,
+            pointerEvents: (isTop && isExiting) ? 'none' : 'auto',
+            transition: 'transform 0.5s ease, opacity 0.5s ease'
+          };
+          
+          return (
+            <RankingItem
+            key={post.id}
+            title={post.title}
+            user={post.userName || "unknown"}
+            imageUrl={post.imageUrl}
+            style={style}
+            />
+          );
+        })}
+        
+        {posts.length === 0 && (
+          <div style={{color: 'var(--text-color)', alignSelf: 'center'}}>
+            ¡No hay más posts!
+          </div>
+        )}
+      </div>
+
       <div className="ranking-item-vote-buttons">
-        <VoteButton text="sida" option={1} points={0} />
-        <VoteButton text="mehh" option={2} points={1} />
-        <VoteButton text="muy low key" option={3} points={3} />
+        <VoteButton text="sida" option={1} points={0} onClick={() => handleVoteClick(0)} />
+        <VoteButton text="mehh" option={2} points={1} onClick={() => handleVoteClick(1)} />
+        <VoteButton text="muy low key" option={3} points={3} onClick={() => handleVoteClick(3)} />
       </div>
     </>
   );

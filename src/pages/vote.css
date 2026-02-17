@@ -1,7 +1,37 @@
+.vote-container {
+    height: 100%;
+    display: grid;
+    grid-row: 2;
+    grid-template-rows: 1fr auto;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+}
 /* Card */
+.card-stack {
+    transform: translateY(-5%);
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    height: 70dvh;
+    margin: 0 auto;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .ranking-item-container {
     background-color: var(--secondary-color);
     padding: var(--spacing-md);
+    position: absolute;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform-origin: center bottom;
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
 }
 
 .ranking-item, .ranking-item-info {
@@ -11,9 +41,17 @@
     color: var(--text-color);
 }
 
+.ranking-item {
+    width: 100%;
+}
+
 .ranking-item-image {
+    width: 100%;
     aspect-ratio: 1;
-    height: 40vh;
+    max-height: 60rem;
+    min-height: 20rem;
+    height: 40dvh;
+    object-fit: cover;
 }
 
 .ranking-item-info h2, .ranking-item-info p {
@@ -30,19 +68,14 @@
     align-items: center;
 }
 
-.ranking-items-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: var(--spacing-md);
-}
-
 /* Buttons */
 .ranking-item-vote-buttons {
     margin-top: var(--spacing-lg);
     display: flex;
     justify-content: center;
     gap: var(--spacing-lg);
+    z-index: 1000; /* Ensure buttons are clickable */
+    position: relative;
 }
 
 .container-ranking-button {
@@ -58,6 +91,7 @@
     border: calc(var(--spacing-sm)/3) solid var(--text-color);
     background-color: transparent;
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .ranking-button:active {
